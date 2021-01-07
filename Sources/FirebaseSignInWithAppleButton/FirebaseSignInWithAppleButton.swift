@@ -34,7 +34,7 @@ public struct FirebaseSignInWithAppleButton: View {
         }
     }
     
-    func createToken(from authorization: ASAuthorization) {
+    public func createToken(from authorization: ASAuthorization) {
         if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
             guard let nonce = currentNonce else {
                 fatalError("Invalid state: A login callback was received, but no login request was sent.")
@@ -56,7 +56,7 @@ public struct FirebaseSignInWithAppleButton: View {
         }
     }
     
-    func signInToFirebase(with token: FirebaseSignInWithAppleToken) {
+    public func signInToFirebase(with token: FirebaseSignInWithAppleToken) {
         
         let providerID = "apple.com"
         let idTokenString = token.idTokenString
@@ -83,7 +83,7 @@ public struct FirebaseSignInWithAppleButton: View {
     }
     
     // Adapted from https://auth0.com/docs/api-auth/tutorials/nonce#generate-a-cryptographically-random-nonce
-    func randomNonceString(length: Int = 32) -> String {
+    public func randomNonceString(length: Int = 32) -> String {
         precondition(length > 0)
         let charset: Array<Character> =
             Array("0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz-._")
@@ -116,7 +116,7 @@ public struct FirebaseSignInWithAppleButton: View {
     }
     
     @available(iOS 13, *)
-    func sha256(_ input: String) -> String {
+    public func sha256(_ input: String) -> String {
         let inputData = Data(input.utf8)
         let hashedData = SHA256.hash(data: inputData)
         let hashString = hashedData.compactMap {
@@ -126,7 +126,7 @@ public struct FirebaseSignInWithAppleButton: View {
         return hashString
     }
     
-    func getName(from appleIDCredential: ASAuthorizationAppleIDCredential) -> String {
+    public func getName(from appleIDCredential: ASAuthorizationAppleIDCredential) -> String {
         var name = ""
         let fullName = appleIDCredential.fullName
         let givenName = fullName?.givenName ?? ""
