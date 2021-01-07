@@ -18,7 +18,7 @@ public struct FirebaseSignInWithAppleButton: View {
     
     @State public var currentNonce: String? = nil
     
-    public init(label: SignInWithAppleButton.Label, requestedScopes: [ASAuthorization.Scope]? = [.fullName, .email], onCompletion: @escaping ((Result<FirebaseSignInWithAppleResult, Error>) -> Void) = {_ in}) {
+    public init(label: SignInWithAppleButton.Label = .signIn, requestedScopes: [ASAuthorization.Scope]? = [.fullName, .email], onCompletion: @escaping ((Result<FirebaseSignInWithAppleResult, Error>) -> Void) = {_ in}) {
         self.label = label
         self.requestedScopes = requestedScopes
         self.onCompletion = onCompletion
