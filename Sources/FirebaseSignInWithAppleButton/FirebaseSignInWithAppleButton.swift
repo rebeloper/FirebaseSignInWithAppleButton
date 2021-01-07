@@ -16,7 +16,7 @@ public struct FirebaseSignInWithAppleButton: View {
     public var requestedScopes: [ASAuthorization.Scope]? = [.fullName, .email]
     public var onCompletion: ((Result<FirebaseSignInWithAppleResult, Error>) -> Void)
     
-    @State var currentNonce: String?
+    @State public var currentNonce: String?
     
     public var body: some View {
         SignInWithAppleButton(label) { (request) in
